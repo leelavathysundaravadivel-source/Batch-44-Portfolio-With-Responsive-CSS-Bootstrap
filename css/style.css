@@ -1,0 +1,183 @@
+/* 1. VARIABLES & ROOT */
+:root {
+    --primary-gradient: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+    --accent: #f1c40f;
+    --text-dark: #2c3e50;
+    --bg-soft: #f4f7f9;
+    --glass: rgba(255, 255, 255, 0.95);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* 2. RESET & BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-soft);
+    color: var(--text-dark);
+    line-height: 1.7;
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 3. HEADER & NAV */
+header {
+    background: var(--primary-gradient);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem); /* Responsive font size */
+    font-weight: 700;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+    animation: slideDown 0.8s ease-out;
+}
+
+header nav {
+    margin-top: 25px;
+}
+
+header nav a {
+    color: #ffffff;         /* Sets the text color to white */
+    text-decoration: none;  /* Removes the default underline */
+    margin: 0 15px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+/* Specific selector to ensure white color is applied */
+header nav a, 
+header nav a:link, 
+header nav a:visited {
+    color: #ffffff !important; /* Force white color */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: var(--transition-smooth);
+    display: inline-block;
+}
+
+header nav a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--accent) !important; /* Changes to yellow on hover */
+}
+/* 4. MAIN CONTENT & SECTIONS */
+main {
+    max-width: 1140px; /* Aligns with Bootstrap container */
+    margin: -40px auto 60px;
+    padding: 0 20px;
+}
+
+section {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    margin-bottom: 50px;
+    padding: clamp(20px, 5vw, 50px);
+    border-radius: 30px;
+    box-shadow: var(--shadow-lg);
+    animation: fadeInUp 1s ease-out;
+}
+
+/* 5. COMPONENTS */
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition-smooth);
+    margin: 0 auto 25px;
+}
+
+.profile-img:hover {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--accent);
+}
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+.project-card {
+    background: white;
+    padding: 30px;
+    border-radius: 25px;
+    flex: 1 1 300px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* 6. FORMS */
+input[type="text"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #e1e8ed;
+    border-radius: 25px;
+    margin-bottom: 15px;
+    transition: var(--transition-smooth);
+}
+
+input:focus {
+    border-color: #2980b9;
+    outline: none;
+    box-shadow: 0 0 10px rgba(41, 128, 185, 0.1);
+}
+
+/* 7. ANIMATIONS */
+@keyframes slideDown {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 8. FOOTER */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 80px 20px 40px;
+    clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* 9. MEDIA QUERIES (Streamlined) */
+@media (max-width: 768px) {
+    header { padding: 50px 15px; clip-path: none; }
+    main { margin-top: 20px; }
+    section { padding: 30px 15px; }
+    .project-card { max-width: 100%; }
+}
